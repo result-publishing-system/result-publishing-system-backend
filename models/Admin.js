@@ -1,8 +1,8 @@
-const { Schema } = require('mongoose');
-const db = require('../db')
+const mongoose = require('mongoose')
+const { Schema } = mongoose
 
-const adminSchema = new db.Schema({
-    username: {
+const adminSchema = new Schema({
+    name: {
         type: String,
         required: true
     },
