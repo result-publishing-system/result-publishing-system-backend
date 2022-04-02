@@ -2,9 +2,15 @@ const { Schema } = require('mongoose');
 const db = require('../db')
 
 const studentSchema = new db.Schema({
-    username: {
-        type: String,
-        required: true
+    name: {
+        firstName: {
+            type: String,
+            required: true
+        },
+        lastName: {
+            type: String,
+            required: true
+        }
     },
     email: {
         type: String,
@@ -21,7 +27,7 @@ const studentSchema = new db.Schema({
     dob: {
         type: Date,
         required: true
-    },
+    },  
     branch: {
         type: String,
         required: true
@@ -29,6 +35,11 @@ const studentSchema = new db.Schema({
     department: {
         type: String,
         required: true
+    },
+    semester: {
+        type: String,
+        required: true,
+        enum: ['1st Semester', '2nd Semester', '3rd Semester', '4th Semester', '5th Semester', '6th Semester', '7th Semester', '8th Semester']
     }
 })
 
