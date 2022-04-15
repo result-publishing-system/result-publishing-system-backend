@@ -11,6 +11,7 @@ app.use(morgan('dev'))
 app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth'))
+app.use('/api/student', require('./routes/student'))
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
