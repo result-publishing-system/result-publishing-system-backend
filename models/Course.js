@@ -2,24 +2,17 @@ const { default: mongoose } = require('mongoose')
 const db = require('../db')
 
 const courseSchema = new db.Schema({
-    departmentName: {
-        type: String,
-        required: true
-    },
     courseName: {
         type: String,
         required: true
     },
-    enrollees: [{
-        type: mongoose.schema.Types.ObjectId,
-        ref: 'User',
-        status: {
-            default: 'ACTIVE',
-            enum: ['ACTIVE', 'INACTIVE']
-        },
-        grades: {
-            type: Number,
-            default: 0
-        }
-    }], 
+    semester: {
+        type: String,
+        required: true,
+        default: '1st Semester',
+        enum: ['1st Semester', '2nd Semester', '3rd Semester', '4th Semester', '5th Semester', '6th Semester', '7th Semester', '8th Semester']
+    },
 })
+
+const Course = mongoose.model('Course', courseSchema);
+module.exports = Course;

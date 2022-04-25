@@ -1,6 +1,5 @@
 const { Schema } = require('mongoose');
 const mongoose = require('mongoose')
-const db = require('../db')
 
 const studentSchema = new Schema({
     name: {
@@ -42,7 +41,13 @@ const studentSchema = new Schema({
         required: true,
         default: '1st Semester',
         enum: ['1st Semester', '2nd Semester', '3rd Semester', '4th Semester', '5th Semester', '6th Semester', '7th Semester', '8th Semester']
-    }
+    },
+    courses: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'course'
+        }
+    ]
 })
 
 const Student = mongoose.model('Student', studentSchema);
