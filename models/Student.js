@@ -36,22 +36,7 @@ const studentSchema = new Schema({
         type: String,
         required: true
     },
-    subjects: [
-        {
-            semester: {
-                type: Number,
-                required: true
-            },
-            subjectName: {
-                type: String,
-                required: true
-            },
-            marks: {
-                type: Number,
-                required: false
-            }
-        }
-    ],
+    subjects: [],
 })
 
 const Student = mongoose.model('Student', studentSchema);

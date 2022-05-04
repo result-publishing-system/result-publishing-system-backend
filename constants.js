@@ -1,27 +1,31 @@
-const subjects = [
+const subjects = new Map()
+
+subjects.set('CSE', [
     {
-        sem: 1,
-        name: basic_computer_engineering,
+        semester: 1,
+        subjectName: 'basic_computer_engineering',
         marks: 0 
     },
     {
-        sem: 1,
-        name: basic_mechanical_engineering,
+        semester: 1,
+        subjectName: 'basic_mechanical_engineering',
         marks: 0 
     },
     {
-        sem: 1,
-        name: engineering_physics,
+        semester: 1,
+        subjectName: 'engineering_physics',
         marks: 0 
     },
     {
-        sem: 1,
-        name: bbasic_civil_engineering,
+        semester: 1,
+        subjectName: 'basic_civil_engineering',
         marks: 0 
     },
     {
-        sem: 1,
-        name: EEES,
+        semester: 1,
+        subjectName: 'EEES',
         marks: 0 
     },
-]
+])
+
+module.exports = subjects

@@ -3,13 +3,14 @@ const router = express.Router()
 const Student = require('../models/Student')
 const { body } = require('express-validator')
 const fetchAdmin = require('../middleware/fetchAdmin')
+const fillSubject = require('../middleware/fillSubjects')
 
 //create student
 router.post('/create', [
-    body('firstname', 'Enter a valid name').isLength({min: 3}),
+    body('firstname', 'Enter a valid name').isAlpha().isLength({min: 1}),
     body('email', 'Enter a valid email').isEmail(),
     body('enroll_no').isLength({min: 1}),
-    body('phone_no', 'Enter a valid phone no.').isLength({min: 10, max: 10}),
+    body('phone_no', 'Enter a valid phone no.').isNumeric().isLength({min: 10, max: 10}),
 ], fetchAdmin, async (req, res) => {
     // const [enroll_no, name, branch, email, phone_no, dob, department] = req.body
     try {
@@ -17,7 +18,7 @@ router.post('/create', [
         if (student.length > 0) {
             return res.status(500).json("Student already enrolled")
         }
-        const newStudent = await new Student({
+        const newStudent =  new Student({
             name: {
                 firstName: req.body.name.firstName,
                 lastName: req.body.name.lastName
@@ -29,8 +30,9 @@ router.post('/create', [
             dob: Date.now(),
             department: req.body.department
         })
-        console.log(newStudent)
         const savedStudent = await newStudent.save()
+        await fillSubject(newStudent.department, newStudent._id)
+        console.log(savedStudent)
         res.status(200).json(savedStudent) 
     } catch(e) {
         res.status(500).json(e);
