@@ -41,7 +41,7 @@ router.get('/fetchallstudents', fetchAdmin, async (req, res) => {
     try {
         const students = await Student.find()
         if (!students) {
-            res.status(500).json("No students found")
+            res.status(500).json("No student found")
         }
         return res.status(200).json(students)
     } catch (e) {
@@ -55,7 +55,7 @@ router.put('/update/:id', [
 ], fetchAdmin, async (req, res) => {
     try {
         const [email, phone_no, firstName, lastName, branch, enroll_no] = req.body
-        const student = await Student.update({
+        const student = await Student.updateOne({
             _id: req.params.id
         }, {
             $set: {
