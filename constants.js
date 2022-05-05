@@ -3,22 +3,22 @@ const subjects = new Map()
 subjects.set('CSE', [
     {
         semester: 1,
-        subjectName: 'basic_computer_engineering',
+        subjectName: 'Basic Computer Engineering',
         marks: 0 
     },
     {
         semester: 1,
-        subjectName: 'basic_mechanical_engineering',
+        subjectName: 'Basic Mechanical Engineering',
         marks: 0 
     },
     {
         semester: 1,
-        subjectName: 'engineering_physics',
+        subjectName: 'Engineering Physics',
         marks: 0 
     },
     {
         semester: 1,
-        subjectName: 'basic_civil_engineering',
+        subjectName: 'Basic Civil Engineering',
         marks: 0 
     },
     {

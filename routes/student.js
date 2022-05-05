@@ -43,11 +43,11 @@ router.get('/fetchallstudents', fetchAdmin, async (req, res) => {
     try {
         const students = await Student.find()
         if (!students) {
-            res.status(500).json("No student found")
+            return res.status(500).json("No student found")
         }
         return res.status(200).json(students)
     } catch (e) {
-        res.status(500).json(e)
+        return res.status(500).json(e)
     }
 })
 

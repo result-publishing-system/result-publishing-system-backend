@@ -54,7 +54,6 @@ router.post('/login', [
     const {email, password} = req.body;
     try {
         let admin = await Admin.findOne({email});
-        console.log(admin)
         if (!admin) {
             return res.status(400).json({error: "Sorry a user with this email does not exist"})
         }
@@ -68,7 +67,7 @@ router.post('/login', [
             }
         }
         const authToken = jwt.sign(data, JWT_SECRET);
-        res.json({authToken: authToken})
+        res.json({authToken: authToken, success: true})
     } catch(error) {
         console.log(error.message)
         res.status(500).send("Internal Server Error")
