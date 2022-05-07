@@ -15,9 +15,10 @@ router.get('/:id', async (req, res) => {
 router.post('/update/:id', async (req, res) => {
     try {
         const updatedSubjects = req.body.subjects
+        console.log(updatedSubjects)
         const updatedStudentMarks = await Student.findOneAndUpdate(
             {_id: req.params.id},
-            {$push: {subjects: updatedSubjects}}
+            {$set: {subjects: updatedSubjects}}
         )
         let st = await Student.findById(req.params.id)
         return res.status(200).json(st)

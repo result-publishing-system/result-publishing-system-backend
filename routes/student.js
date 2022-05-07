@@ -54,7 +54,7 @@ router.get('/fetchallstudents', fetchAdmin, async (req, res) => {
 router.put('/update/:id', [
     body('email', 'Enter a valid email').isEmail(),
     body('phone_no', 'Enter a valid phone no.').isNumeric().isLength({min: 10, max: 10})
-], fetchAdmin, async (req, res) => {
+], async (req, res) => {
     try {
         const [email, phone_no, firstName, lastName, branch, enroll_no] = req.body
         const student = await Student.updateOne({

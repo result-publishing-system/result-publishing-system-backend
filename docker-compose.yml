@@ -1,0 +1,32 @@
+services:
+  #MongoDB service
+  mongo_db:
+    container_name: db_container
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongo_db:/data/db
+     
+  api:
+    build: .
+    # ports: 
+    #   - 3000:3000
+    environment:
+      PORT: 3000
+      MONGODB_URI: "${URI}"
+      DB_NAME: result_publishing_system
+      NAME: KunalRohitas
+    depends_on:
+      - mongo_db
+  
+  nginx:
+    image: nginx:latest
+    volumes:
+    - ./conf.d:/etc/nginx/conf.d
+    depends_on:
+      - api
+    ports:
+      - 3000:3000
+
+volumes:
+  mongo_db: {}

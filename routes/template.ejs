@@ -175,7 +175,7 @@
                                             <br />
                                         </td>
                                     </tr> 
-                                    <% data.subjects[0].forEach(element => { %>
+                                    <% data.subjects.forEach(element => { %>
                                         <tr>
                                             <td>
                                                 <%= element.subjectName %> 
@@ -193,7 +193,7 @@
                                                 </td>
 
                                             </tr>
-                                            <% data.subjects[0].forEach(element => { %>
+                                            <% data.subjects.forEach(element => { %>
                                                 <tr>
                                                     <td>
                                                         <span id="rptMaxMarksTheory_lblTHMAX_0"><%= element.marks %> </span>
