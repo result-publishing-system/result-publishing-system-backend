@@ -20,19 +20,18 @@ router.post('/create', [
         }
         const newStudent =  new Student({
             name: {
-                firstName: req.body.name.firstName,
-                lastName: req.body.name.lastName
+                firstName: req.body.firstname,
+                lastName: req.body.lastname
             },
-            enroll_no: req.body.enroll_no,
+            enroll_no: req.body.enrollment,
             branch: req.body.branch,
             email: req.body.email,
-            phone_no: req.body.phone_no,
-            dob: Date.now(),
+            phone_no: req.body.contact,
+            dob: req.body.dob,
             department: req.body.department
         })
         const savedStudent = await newStudent.save()
         await fillSubject(newStudent.department, newStudent._id)
-        console.log(savedStudent)
         res.status(200).json(savedStudent) 
     } catch(e) {
         res.status(500).json(e);
